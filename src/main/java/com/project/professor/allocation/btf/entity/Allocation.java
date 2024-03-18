@@ -25,6 +25,7 @@ public class Allocation {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
 	
 	@Enumerated(EnumType.STRING)
