@@ -1,10 +1,14 @@
 package com.project.professor.allocation.btf.entity;
 
+import com.project.professor.alocation.entity.Department;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,6 +29,10 @@ public class Professor {
 	
 	@Column(name = "cpf", unique = true, nullable = false, length = 11)
 	private String cpf;
+	
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "department_id", nullable = false)
+	private Department department;
 	
 	public Long getId() {
 		return id;
