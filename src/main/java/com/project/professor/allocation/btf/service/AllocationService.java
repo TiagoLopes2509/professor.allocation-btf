@@ -33,6 +33,22 @@ public class AllocationService {
 		return allocationRepository.findById(id).orElse(null);
 	}
 	
+	public List<Allocation> findByProfessor(Long professorId){
+		
+		Professor professor = new Professor();
+		professor.setId(professorId);
+		
+		return allocationRepository.findByProfessor(professor);	
+	}
+	
+	public List<Allocation> findByCourse(Long courseId){
+		
+		Course course = new Course();
+		course.setId(courseId);
+		
+		return allocationRepository.findByCourse(course);
+	}
+	
 	public Allocation create(Allocation allocation) {
 		allocation.setId(null);
 		
