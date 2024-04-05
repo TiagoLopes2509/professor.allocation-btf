@@ -32,16 +32,17 @@ public class ProfessorService {
 	}
 	
 	public Professor create(Professor professor) {
+		professor.setId(null);
+				
 		return saveInternal(professor);
 	}
 	
 	public Professor update(Professor professor) {
-		
-		return professorRepository.existsById(professor.getId()) == true ? saveInternal(professor) : null;
+		return professorRepository.existsById(professor.getId()) ? saveInternal(professor) : null;
 	}
 
 	public void deleteById(Long id) {
-		if(professorRepository.existsById(id)) 
+		if (professorRepository.existsById(id))
 			professorRepository.deleteById(id);	
 	}
 	

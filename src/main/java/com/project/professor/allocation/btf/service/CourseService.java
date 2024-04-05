@@ -26,15 +26,13 @@ public class CourseService {
 	}
 	
 	public Course create(Course course) {
+		course.setId(null);
+		
 		return saveInternal(course);
 	}
 	
 	public Course update(Course course) {
-		boolean exist = courseRepository.existsById(course.getId());
-		if (exist) {
-			return saveInternal(course);
-		}
-		return null;
+		return courseRepository.existsById(course.getId()) ? saveInternal(course) : null;
 	}
 	
 	private Course saveInternal(Course course) {
