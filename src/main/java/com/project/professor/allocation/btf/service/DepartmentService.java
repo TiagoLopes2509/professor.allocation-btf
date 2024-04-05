@@ -26,15 +26,13 @@ public class DepartmentService {
 	}
 	
 	public Department create(Department department) {
+		department.setId(null);
+		
 		return saveInternal(department);
 	}
 	
 	public Department update(Department department) {
-		boolean exist = departmentRepository.existsById(department.getId());
-		if (exist) {
-			return saveInternal(department);
-		}
-		return null;
+		return departmentRepository.existsById(department.getId()) ? saveInternal(department) : null;
 	}
 	
 	private Department saveInternal(Department department) {

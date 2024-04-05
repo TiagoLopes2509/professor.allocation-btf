@@ -34,15 +34,17 @@ public class AllocationService {
 	}
 	
 	public Allocation create(Allocation allocation) {
+		allocation.setId(null);
+		
 		return saveInternal(allocation);
 	}
 	
 	public Allocation update(Allocation allocation) {
-		return allocationRepository.existsById(allocation.getId()) == true ?  saveInternal(allocation) : null;
+		return allocationRepository.existsById(allocation.getId()) ?  saveInternal(allocation) : null;
 	}
 	
 	public void deleteById(Long id) {
-		if(allocationRepository.existsById(id))
+		if (allocationRepository.existsById(id))
 			allocationRepository.deleteById(id);
 	}
 	

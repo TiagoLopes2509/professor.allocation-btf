@@ -8,12 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
 
-	Department findByName(String name);
-	
-	List<Department> findByNameLike(String name);
-	
-	List<Department> findByNameContaining(String name);
-	
 	List<Department> findByNameIgnoreCaseContaining(String name);
 }
 
