@@ -18,24 +18,19 @@ import jakarta.persistence.Table;
 @Table(name = "allocation")
 public class Allocation {
 	
-	public Allocation() 
-	{
-		
-	}
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "day", nullable = false)
+	@Column(name = "dayOfWeek", nullable = false)
 	private DayOfWeek day;
 	
-	@Column(name = "start", nullable = false)
+	@Column(name = "startHour", nullable = false)
 	private Time startHour;
 	
-	@Column(name = "end", nullable = false)
+	@Column(name = "endHour", nullable = false)
 	private Time endHour;
 	
 	@ManyToOne(optional = false)
@@ -103,11 +98,11 @@ public class Allocation {
 	}
 
 	@Override
-	public String toString() 
-	{
-		return "Allocation [id=" + id + ", day=" + day + ", start=" + startHour + ", end=" + endHour + "]";
+	public String toString() {
+		return "Allocation [id=" + id + ", day=" + day + ", startHour=" + startHour + ", endHour=" + endHour
+				+ ", professor=" + professor + ", course=" + course + "]";
 	}
-	
+
 	
 
 }
