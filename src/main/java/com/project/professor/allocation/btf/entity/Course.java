@@ -10,11 +10,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Course")
 public class Course {
-	
-	public Course()
-	{
-		
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
