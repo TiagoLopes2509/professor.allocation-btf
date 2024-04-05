@@ -1,9 +1,11 @@
 package com.project.professor.allocation.btf.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.project.professor.allocation.btf.entity.Department;
 import com.project.professor.allocation.btf.entity.Professor;
 import com.project.professor.allocation.btf.repository.ProfessorRepository;
 
@@ -29,6 +31,17 @@ public class ProfessorService {
 	
 	public Professor findById(Long id) {
 		return professorRepository.findById(id).orElse(null);
+	}
+	
+	public List<Professor> findByDepartment(Long id) {
+		List<Professor> listProfs = new ArrayList<Professor>();
+		
+		Department dep = departmentService.findById(id);
+		if (dep != null) {
+			listProfs = professorRepository.findByDepartment(dep);
+		}
+		
+		return listProfs;
 	}
 	
 	public Professor create(Professor professor) {
