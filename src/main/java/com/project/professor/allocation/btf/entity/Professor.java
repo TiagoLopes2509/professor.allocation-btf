@@ -13,11 +13,6 @@ import jakarta.persistence.Table;
 @Table(name = "professor")
 public class Professor {
 	
-	public Professor() 
-	{
-
-	}
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -56,10 +51,10 @@ public class Professor {
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
-	
 	@Override
 	public String toString() {
-		return "Professor [id=" + id + ", name=" + name + ", cpf=" + cpf + "]";
+		return "Professor [id=" + id + ", name=" + name + ", cpf=" + cpf + ", department=" + department + "]";
 	}
+	
 
 }
