@@ -39,10 +39,10 @@ public class DepartmentService {
 		return departmentRepository.save(department);
 	}
 	
-	public boolean delete(Department department) {
-		boolean exist = departmentRepository.existsById(department.getId());
+	public boolean deleteById(Long id) {
+		boolean exist = departmentRepository.existsById(id);
 		if (exist) {
-			departmentRepository.delete(department);
+			departmentRepository.deleteById(id);
 		}
 		return exist;
 	}
