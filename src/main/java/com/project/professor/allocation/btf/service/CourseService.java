@@ -39,10 +39,10 @@ public class CourseService {
 		return courseRepository.save(course);
 	}
 	
-	public boolean delete(Course course) {
-		boolean exist = courseRepository.existsById(course.getId());
+	public boolean deleteById(Long id) {
+		boolean exist = courseRepository.existsById(id);
 		if (exist) {
-			courseRepository.delete(course);
+			courseRepository.deleteById(id);
 		}
 		return exist;
 	}
