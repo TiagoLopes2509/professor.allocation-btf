@@ -3,6 +3,8 @@ package com.project.professor.allocation.btf.entity;
 import java.sql.Time;
 import java.time.DayOfWeek;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -18,6 +20,7 @@ import jakarta.persistence.Table;
 @Table(name = "allocation")
 public class Allocation {
 	
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -33,10 +36,12 @@ public class Allocation {
 	@Column(name = "endHour", nullable = false)
 	private Time endHour;
 	
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "professor_id", nullable = false)
 	private Professor professor;
 	
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "course_id", nullable = false)
 	private Course course;
@@ -95,6 +100,18 @@ public class Allocation {
 
 	public void setCourse(Course course) {
 		this.course = course;
+	}
+	
+	public void setProfessorId(Long id) {
+		Professor professor = new Professor();
+		professor.setId(id);
+		this.setProfessor(professor);
+	}
+
+	public void setCourseId(Long id) {
+		Course course = new Course();
+		course.setId(id);
+		this.setCourse(course);
 	}
 
 	@Override
