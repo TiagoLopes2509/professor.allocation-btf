@@ -74,7 +74,7 @@ public class AllocationService {
 		return !currentAllocation.getId().equals(newAllocation.getId()) 
 				&& currentAllocation.getDay() == newAllocation.getDay()
 				&& currentAllocation.getStartHour().compareTo(newAllocation.getEndHour()) < 0
-				&& newAllocation.getStartHour().compareTo(currentAllocation.getEndHour())> 0;
+				&& newAllocation.getStartHour().compareTo(currentAllocation.getEndHour()) < 0;
 	}
 	
 	private Allocation saveInternal(Allocation allocation) {

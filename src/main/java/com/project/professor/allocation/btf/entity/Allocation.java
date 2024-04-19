@@ -5,6 +5,7 @@ import java.time.DayOfWeek;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -30,9 +31,11 @@ public class Allocation {
 	@Column(name = "dayOfWeek", nullable = false)
 	private DayOfWeek day;
 	
+	@Schema(example = "19:00:00", type = "string")
 	@Column(name = "startHour", nullable = false)
 	private Time startHour;
 	
+	@Schema(example = "22:00:00", type = "string")
 	@Column(name = "endHour", nullable = false)
 	private Time endHour;
 	
